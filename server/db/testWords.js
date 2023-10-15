@@ -2,9 +2,7 @@ const connection = require('./connection')
 
 function getWordsForTest(auth0Id, maxAccuracy, db = connection) {
   return db('words')
-    .leftJoin('word_accuracy', function () {
-      this.on('words.id', '=', 'word_accuracy.word_id')
-    })
+    .leftJoin('word_accuracy', 'words.id', '=', 'word_accuracy.word_id')
     .select('words.id as word_id', 'words.word')
     .where('word_accuracy.user_id', auth0Id)
     .andWhere('accuracy', '<=', maxAccuracy)
