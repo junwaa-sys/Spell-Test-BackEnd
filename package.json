@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run knex migrate:latest",
+    "knex": "knex --knexfile ./server/db/knexfile.js",
     "start": "nodemon ./server/index.js"
   },
   "keywords": [],
