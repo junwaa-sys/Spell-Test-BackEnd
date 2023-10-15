@@ -4,8 +4,6 @@ function getWordsForTest(auth0Id, maxAccuracy, db = connection) {
   return db('words')
     .leftJoin('word_accuracy', 'words.id', '=', 'word_accuracy.word_id')
     .select('words.id as word_id', 'words.word')
-    .orwhere('word_accuracy.user_id', auth0Id)
-    .orWhere('accuracy', '<=', maxAccuracy)
 }
 
 function getWordsTestResults({ userId, wordId }, db = connection) {
