@@ -15,10 +15,6 @@ server.use('/api/words', wordRoutes)
 server.use('/api/test', testRoutes)
 server.use('/api/test/history', testHistoryRoutes)
 
-server.get('*', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html')
-})
-
 server.listen(PORT, () => {
   console.log(`APP listening on port ${PORT}`)
 })
